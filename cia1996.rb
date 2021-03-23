@@ -1,3 +1,5 @@
+NUMBER = 5
+
 class Country
   require 'rexml/document'
   include REXML
@@ -27,8 +29,8 @@ class Country
 
   def max_inflation
     puts 'Top inflation: '
-    @inflation = @inflation.sort!.last(5)
-    @inflation.length.times do |i|
+    @inflation = @inflation.sort!.last(NUMBER)
+    NUMBER.times do |i|
       @doc.elements.each('cia/country') do |element|
         if element.attributes['inflation'].to_i == @inflation[i]
           @name_inf = element.attributes['name']
